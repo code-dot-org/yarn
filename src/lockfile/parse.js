@@ -93,6 +93,7 @@ export function* tokenise(input: string): Iterator<Token> {
       try {
         yield buildToken(TOKEN_TYPES.string, JSON.parse(val));
       } catch (err) {
+        console.error({val});
         if (err instanceof SyntaxError) {
           yield buildToken(TOKEN_TYPES.invalid);
         } else {
